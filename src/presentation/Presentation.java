@@ -9,8 +9,8 @@ public class Presentation {
 		
 		Scolarite metier = new Scolarite();
 		Etudiant e1 = new Etudiant("Simpson", "Homer", 38);
-		metier.AjouterEtudiant(e1);
 
+		metier.supprimerEtudiant(5);
 	}
 
 }
