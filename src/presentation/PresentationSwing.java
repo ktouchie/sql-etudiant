@@ -2,12 +2,17 @@ package presentation;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import dao.Scolarite;
+import metier.Etudiant;
 
 public class PresentationSwing extends JFrame {
 
@@ -49,8 +54,28 @@ public class PresentationSwing extends JFrame {
 		// ajout 2eme JPanel à ma fenetre
 		this.add(row2, BorderLayout.CENTER);
 
+		// add event to button
+		jb1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String n = nom.getText();
+				nom.setText("");
+				String p = prenom.getText();
+				prenom.setText("");
+				int a = Integer.parseInt(age.getText());
+				age.setText("");
+
+				Scolarite s = new Scolarite();
+
+				Etudiant e = new Etudiant(n, p, a);
+
+				s.ajouterEtudiant(e);
+			}
+		});
+
 		// make visible
-		this.setBounds(10, 10, 500, 500);
+		this.setBounds(10, 10, 500, 100);
 		this.setVisible(true);
 	}
 
